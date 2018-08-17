@@ -1,7 +1,7 @@
-class ParksController < ApplicationController 
+class ParksController < ApplicationController
 
   def index
-    render json: Park.all
+    render json: Park.all, each_serializer: ParkListingSerializer
   end
 
   def show
