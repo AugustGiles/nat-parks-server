@@ -21,6 +21,14 @@ states.each do |state|
       lat = bad_lat_long[0].split(':')[1]
       long = bad_lat_long[1].split(':')[1]
 
+      image_sources = []
+      image_titles = []
+
+      el["images"].each do |image|
+        image_sources.push(image["url"])
+        image_titles.push(image["title"])
+      end
+
 
       park = Park.find_or_create_by(
         api_id: el["id"],
@@ -29,8 +37,11 @@ states.each do |state|
         full_name: el["fullName"],
         coordinates: [long, lat],
         url: el["url"],
-        weather_info: el["weatherInfo"]
+        weather_info: el["weatherInfo"],
+        image_sources: image_sources,
+        image_titles: image_titles
       )
+      debugger
 
       foundState = State.find_or_create_by(name: state)
       foundState.parks.push(park)
