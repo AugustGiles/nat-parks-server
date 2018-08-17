@@ -21,7 +21,7 @@ states.each do |state|
       long = bad_lat_long[1].split(':')[1]
 
 
-      park = Park.create(
+      park = Park.find_or_create_by(
         api_id: el["id"],
         description: el["description"],
         designation: el["designation"],
