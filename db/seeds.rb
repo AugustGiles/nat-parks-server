@@ -32,10 +32,9 @@ states.each do |state|
         weather_info: el["weatherInfo"]
       )
 
-      el["states"].split(",").each do |state|
-        state = State.find_or_create_by(name: state)
-        state.parks.push(park)
-      end
+      state = State.find_or_create_by(name: state)
+      state.parks.push(park)
+      
     end
   end
 end
