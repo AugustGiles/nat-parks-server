@@ -41,7 +41,7 @@ states.each do |state|
         image_sources: image_sources,
         image_titles: image_titles
       )
-      debugger
+      
 
       foundState = State.find_or_create_by(name: state)
       foundState.parks.push(park)
