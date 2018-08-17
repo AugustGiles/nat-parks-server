@@ -5,6 +5,7 @@ states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'FL', 'GA', 'HI', 'ID'
 
 Park.destroy_all
 State.destroy_all
+ParkState.destroy_all
 
 # LOOP THROUGH EACH STATE AND FETCH ITS PARKS
 states.each do |state|
