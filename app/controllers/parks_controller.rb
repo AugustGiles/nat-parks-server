@@ -14,7 +14,7 @@ class ParksController < ApplicationController
     park = Park.find(params[:id])
     url = "https://developer.nps.gov/api/v1/alerts?api_key=#{Rails.application.credentials.api_key}&parkCode=#{park.park_code}&limit=#{3}"
 
-    data = open(url).read
+    data = JSON.parse(open(url).read)
     render json: data.to_json
   end
 
