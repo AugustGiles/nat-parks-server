@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
   post '/login', to: 'auth#login'
   get '/profile', to: 'users#show'
-  post '/follow/:park_id', to: 'users#follow'
+  post '/follow/:id', to: 'users#follow'
 end
