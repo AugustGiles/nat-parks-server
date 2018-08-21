@@ -39,7 +39,7 @@ states.each do |state|
         url: el["url"],
         weather_info: el["weatherInfo"],
         image_sources: image_sources,
-        image_titles: image_titles
+        image_titles: image_titles,
         park_code: el["parkCode"]
       )
 
