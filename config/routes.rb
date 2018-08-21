@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :parks, only: [:index, :show]
   resources :states, only: [:index, :show]
-  get '/login', to: 'auth#login'
-  
+  resources :users, only: [:create]
+  post '/login', to: 'auth#login'
+  get '/user', to: 'users#show'
 end

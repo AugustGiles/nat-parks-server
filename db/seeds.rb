@@ -10,7 +10,7 @@ ParkState.destroy_all
 # LOOP THROUGH EACH STATE AND FETCH ITS PARKS
 states.each do |state|
 
-  url="https://developer.nps.gov/api/v1/parks?api_key=KRC7GQJ0JJ5LC5agmTbZJkz1GhGRAbLAlnrVlzRB&fields=images&stateCode=#{state}"
+  url="https://developer.nps.gov/api/v1/parks?api_key=#{Rails.application.credentials.api_key}&fields=images&stateCode=#{state}"
 
   data = JSON.parse(open(url).read)
 
@@ -41,7 +41,7 @@ states.each do |state|
         image_sources: image_sources,
         image_titles: image_titles
       )
-      
+
 
       foundState = State.find_or_create_by(name: state)
       foundState.parks.push(park)
