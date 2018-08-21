@@ -19,6 +19,10 @@ class UsersController < ApplicationController
     render json: @current_user
   end
 
+  def follow
+    authorized
+  end
+
   private
 
   def current_user
