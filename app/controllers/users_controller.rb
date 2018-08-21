@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
-  before_action :current_user, only: [:show]
+  # before_action :current_user, only: [:show]
 
   def create
     user = User.create(username: params[:username], password: params[:password])
@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    current_user
     render json: @current_user
   end
 
