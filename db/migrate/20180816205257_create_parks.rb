@@ -8,6 +8,7 @@ class CreateParks < ActiveRecord::Migration[5.2]
       t.string :coordinates, array: true, default: []
       t.string :url
       t.string :weather_info
+      t.string :park_code
       t.string :image_titles, array: true, default: []
       t.string :image_sources, array: true, default: []
 

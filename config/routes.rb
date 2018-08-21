@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   post '/login', to: 'auth#login'
   get '/profile', to: 'users#show'
   post '/follow/:id', to: 'users#follow'
+  get '/parks/:id/alerts', to: 'parks#alerts'
+  get '/parks/:id/events', to: 'parks#events'
 end

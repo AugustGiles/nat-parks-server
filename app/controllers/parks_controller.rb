@@ -10,5 +10,17 @@ class ParksController < ApplicationController
     render json: @park
   end
 
+  def alerts
+    park = Park.find(params[:id])
+    url = "https://developer.nps.gov/api/v1/alerts?api_key=#{Rails.application.credentials.api_ey}&parkCode=#{park.park_code}&limit=#{3}"
+
+    data = open(url).read
+    render json: data.to_json
+  end
+
+  def events
+
+  end
+
 
 end
