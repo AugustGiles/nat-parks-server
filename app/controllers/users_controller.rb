@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
   # before_action :current_user, only: [:show]
-  
+
 
 
   def create
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       token = generate_token(user)
       render json: { success: true, token: token }.to_json, status: 200
     else
-      render json: { success: false }
+      render json: { success: false, message: "Username Taken" }
     end
   end
 
