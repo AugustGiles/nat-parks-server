@@ -28,9 +28,8 @@ class UsersController < ApplicationController
 
   def unfollow
     authorized
-    @current_user.parks.delete_if do |park|
-      park.id == params[:id]
-    end
+    park = @current_user.parks.find(params[:id])
+    @current_user.parks.delete(park)
     render json: { success: true, message: "Unfollowed Park" }
   end
 
