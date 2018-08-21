@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def create
     user = User.create(username: params[:username], password: params[:password])
 
-    render json: { success: true, token: generate_token(user) }
+    render json: { success: true, token: generate_token(user) }, status: 200
   end
 
   def show
