@@ -13,7 +13,7 @@ class ParksController < ApplicationController
 
   def alerts
     park = Park.find(params[:id])
-    url = "https://developer.nps.gov/api/v1/alerts?api_key=#{Rails.application.credentials.api_key}&parkCode=#{park.park_code}&limit=#{3}"
+    url = "https://developer.nps.gov/api/v1/alerts?api_key=#{Rails.application.credentials.api_key}&parkCode=#{park.park_code}&limit=#{2}"
 
     data = JSON.parse(open(url).read)
     render json: data.to_json
@@ -21,7 +21,7 @@ class ParksController < ApplicationController
 
   def events
     park = Park.find(params[:id])
-    url = "https://developer.nps.gov/api/v1/events?api_key=#{Rails.application.credentials.api_key}&parkCode=#{park.park_code}&limit=#{5}"
+    url = "https://developer.nps.gov/api/v1/events?api_key=#{Rails.application.credentials.api_key}&parkCode=#{park.park_code}&limit=#{2}"
 
     data = JSON.parse(open(url).read)
     render json: data.to_json
