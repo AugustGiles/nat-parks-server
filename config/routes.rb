@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :states, only: [:index, :show]
   resources :users, only: [:create]
   post '/login', to: 'auth#login'
-  get '/user', to: 'users#show'
+  get '/profile', to: 'users#show'
 end

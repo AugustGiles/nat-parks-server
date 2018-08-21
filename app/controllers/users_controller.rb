@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    current_user
+    authorized
     render json: @current_user
   end
 
