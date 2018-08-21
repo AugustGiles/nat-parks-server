@@ -3,8 +3,9 @@ class UsersController < ApplicationController
   # before_action :current_user, only: [:show]
 
   def create
-    user = User.create(username: params[:username], password: params[:password])
+    user = User.create(user_params)
     token = generate_token(user)
+
     render json: { success: true, token: token }.to_json, status: 200
   end
 
@@ -39,5 +40,6 @@ class UsersController < ApplicationController
     render json: {message: "Please Log In to Continue"}, status: 403 unless logged_in?
   end
 
-
+  def user_params
+    params.permit(:username, :password)
 end
