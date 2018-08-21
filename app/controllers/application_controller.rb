@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-  
 
   def generate_token(user)
     alg = 'HS256'

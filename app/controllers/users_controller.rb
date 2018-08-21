@@ -1,17 +1,20 @@
 class UsersController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
   # before_action :current_user, only: [:show]
+  validates :username, uniqueness: true
+
 
   def create
     user = User.create(user_params)
-    @current_user = user.id
-    token = generate_token(user)
-
-    render json: { success: true, token: token }.to_json, status: 200
+    if user.valid?
+      token = generate_token(user)
+      render json: { success: true, token: token }.to_json, status: 200
+    else
+      render json: { success: false }
+    end 
   end
 
   def show
-    puts show
     authorized
     render json: @current_user
   end
@@ -38,7 +41,7 @@ class UsersController < ApplicationController
 
   def authorized
     puts "authorized"
-    render json: {message: "Please Log In to Continue"}, status: 403 unless logged_in?
+    render json: {message: "Please Log In to Continue"}, status: 401 unless logged_in?
   end
 
   def user_params
