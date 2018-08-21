@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    puts show
     authorized
     render json: @current_user
   end
@@ -34,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   def authorized
+    puts "authorized"
     render json: {message: "Please Log In to Continue"}, status: 401 unless logged_in?
   end
 
