@@ -1,3 +1,4 @@
+require 'open-uri'
 class ParksController < ApplicationController
 
   def index
