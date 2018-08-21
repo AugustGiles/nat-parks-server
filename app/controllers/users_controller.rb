@@ -21,6 +21,9 @@ class UsersController < ApplicationController
 
   def follow
     authorized
+    park = Park.find(params[:id])
+    @current_user.parks.push(park)
+    render json: { success: true, message: "Followed Park"}
   end
 
   private
@@ -44,7 +47,6 @@ class UsersController < ApplicationController
   end
 
   def authorized
-    puts "authorized"
     render json: {message: "Please Log In to Continue"}, status: 401 unless logged_in?
   end
 
