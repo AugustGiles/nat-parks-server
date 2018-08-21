@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
   def authorized
     puts "authorized"
-    render json: {message: "Please Log In to Continue"}, status: 401 unless logged_in?
+    render json: {message: "Please Log In to Continue"}, status: 403 unless logged_in?
   end
 
 

@@ -8,7 +8,7 @@ class AuthController < ApplicationController
     if user && user.authenticate(pw)
       render json: { success: true, token: generate_token(user) }
     else
-      render json: { success: false }, status: 401 
+      render json: { success: false }, status: 400 
     end
   end
 
