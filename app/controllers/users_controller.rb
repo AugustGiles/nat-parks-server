@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   include ActionController::HttpAuthentication::Token::ControllerMethods
   # before_action :current_user, only: [:show]
-  validates :username, uniqueness: true
+  
 
 
   def create
@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       render json: { success: true, token: token }.to_json, status: 200
     else
       render json: { success: false }
-    end 
+    end
   end
 
   def show
